@@ -1,8 +1,4 @@
 <?php
-require('model/Bdd.php');
-require('model/Article.php');
-require('model/ArticleManager.php');
-
 // instanciation = creation d'un objet : $article
 
 	if(!empty($_POST['titre']) OR (!empty($_POST['text'])))

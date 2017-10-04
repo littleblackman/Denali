@@ -1,9 +1,4 @@
 <?php
-require('model/Bdd.php');
-require('model/User.php');
-require('model/UserManager.php');
-
-
 if(!empty($_POST['username']) && (!empty($_POST['email'])) && (!empty($_POST['password'])) && (!empty($_POST['password_confirm'])))
 {
         $user = new User();

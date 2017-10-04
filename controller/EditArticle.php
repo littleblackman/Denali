@@ -1,8 +1,4 @@
 <?php
-require('model/Bdd.php');
-require('model/Article.php');
-require('model/ArticleManager.php');
-
 
 	if(!empty($_GET['id']) AND (ctype_digit($_GET['id'])))
 	{

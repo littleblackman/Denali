@@ -1,9 +1,5 @@
 <?php
-require('model/Bdd.php');
-require('model/Article.php');
-require('model/ArticleManager.php');
-require('model/Commentaire.php');
-require('model/CommentaireManager.php');
+
 
 // instanciation = creation d'un objet : $article
 
