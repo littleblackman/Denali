@@ -11,12 +11,12 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="Home.php">Accueil</a></li>
-            <li><a href="Register.php">S'inscrire</a></li>
-            <li><a href="Login.php">Se connecter</a></li>
-            <li><a href="Dashboard.php">Tableau de bord</a></li>
-            <li><a href="CreateArticle.php">Nouveau chapitre</a></li>
-            <li><a href="Logout.php">Quitter</a></li>
+            <li><a href="Home">Accueil</a></li>
+            <li><a href="Register">S'inscrire</a></li>
+            <li><a href="Login">Se connecter</a></li>
+            <li><a href="Dashboard">Tableau de bord</a></li>
+            <li><a href="CreateArticle">Nouveau chapitre</a></li>
+            <li><a href="Logout">Quitter</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
