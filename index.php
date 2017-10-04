@@ -1,7 +1,6 @@
 <?php
-require_once ('config.php');
-require_once('model/Bdd.php');
-require_once('model/Router.php');
+require_once 'model/Autoloader.php';
+Autoloader::register();
 
 $url =$_GET['url'];
 $router= new Router($url);
