@@ -2,7 +2,7 @@
 /*
 Declaration de la classe ArticleManager 
 */
-class ArticleManager extends Bdd
+class ArticleManager extends BddManager
 {
      /**
      * Insert un objet Article dans la BDD

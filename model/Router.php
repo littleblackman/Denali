@@ -11,18 +11,19 @@ class Router
          "Home" => '/controller/Home.php',
          "InsertComments" => '/controller/InsertComments.php',
          "Login" => '/controller/Login.php',
-
+         "Logout" =>'/controller/Logout.php',
+         "ReadArticle"=>'controller/ReadArticle.php',
+         "Register" =>'controller/Register.php',
+         "Update" =>'controller/Update.php'
     ];
-
-//constructeur qui prend en parametres l'url
+//constructor qui prend en parametres l'url
     public function __construct($url)
     {
         $this->url = $url;
     }
-
-    /**
-     * @return array
-     */
+/**
+ * @return array
+ */
     public function getRoutes()
     {
         return $this->routes;

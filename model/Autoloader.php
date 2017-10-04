@@ -5,10 +5,9 @@
  * Date: 04/10/2017
  * Time: 11:12
  */
-
 class Autoloader
 {
-    // Enregistrement via la fonction spl_auto_loader
+    // Enregistrement de la fonction en autoload afin qu'elle soit appele des que l'on instanciera une classe
     static function register()
     {
         spl_autoload_register(array(__CLASS__, 'autoload'));
@@ -16,6 +15,6 @@ class Autoloader
 
     static function autoload($class)
     {
-        require __DIR__.'\\'.$class.'.php';
+        require_once __DIR__.'\\'.$class.'.php';
     }
 }
