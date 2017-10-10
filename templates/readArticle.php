@@ -1,7 +1,4 @@
-<?php
-include_once ('_head.php');
-include_once ('_nav.php'); 
-?>
+<?php ob_start(); ?>
 <header>
 	<article>
 	    <h2><?php echo $article->getTitre(); ?></h2>
@@ -33,7 +30,7 @@ include_once ('_nav.php');
 		<p id="Commenter"> Commenter
 	</div>
 	<div class="panel-body">
-		     <form action ="InsertComments.php" method="POST" ><br/>
+		     <form action ="InsertComments" method="POST" ><br/>
 		     <input type="hidden" name="id" value="<?php echo $idArticle?>"/>
 		     <label for="titre"> Pseudo </label> : <br/><input type = "text" name ="username" id="username" /> <br/>
 		     <label for="texte"> Commentaires </label> : <br/><textarea name="commentaire" id="commentaire" rows="10" cols="135"/></textarea><br />
@@ -41,5 +38,6 @@ include_once ('_nav.php');
 	    </p>
 	 </div>
 </div>
-<?php include_once ('_footer.php');?>
+<?php $contenu = ob_get_clean(); ?>
+<?php require 'gabarit.php'; ?>
  

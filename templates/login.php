@@ -1,7 +1,4 @@
-<?php
-include_once ('_head.php');
-include_once ('_nav.php');
-?>        
+<?php ob_start(); ?>
 <h1>Se connecter</h1>
 
     <form action="login.php" method="POST">
@@ -20,7 +17,8 @@ include_once ('_nav.php');
         </div>
             <button type="submit" class="btn btn-primary">Se connecter</button>
     </form>
-<?php include_once ('_footer.php');?>
+<?php $contenu = ob_get_clean(); ?>
+<?php require 'gabarit.php'; ?>
  
  
 

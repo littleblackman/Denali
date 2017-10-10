@@ -1,8 +1,6 @@
-<?php
-include_once ('_head.php');
-include_once ('_nav.php');
-?>
+<?php ob_start(); ?>
 <section>
 
 </section>
-<?php include_once ('_footer.php');?>
+<?php $contenu = ob_get_clean(); ?>
+<?php require 'gabarit.php'; ?>

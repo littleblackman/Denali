@@ -1,6 +1,5 @@
-<?php
-include_once ('_head.php');
-include_once ('_nav.php');
+<?php ob_start(); ?>
+//Remettre les required sur chaque champs quand traitements des erre
 ?>
 <h1>S'inscrire</h1>
         <?php if(!empty($errors)): ?>
@@ -15,22 +14,23 @@ include_once ('_nav.php');
         <?php endif; ?>
     <form action="" method="POST">
             <div class="form-group">
+
                 <label for="">Pseudo</label>
-                <input type="text" name="username" class="form-control"/>
+                <input type="text" name="username" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="text" name="email" class="form-control"/>
+                <input type="text" name="email" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="">Mot de passe</label>
-                <input type="password" name="password" class="form-control"/>
+                <input type="password" name="password" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="">Confirmez votre mot de passe</label>
-                <input type="password" name="password_confirm" class="form-control"/>
+                <input type="password" name="password_confirm" class="form-control" />
             </div>
-                <button type="submit" class="btn btn-primary">M'inscrire</button>
+                <button type="submit" name = "test" class="btn btn-primary">M'inscrire</button>
     </form>
-<?php include_once ('_footer.php');?>
- 
+<?php $contenu = ob_get_clean(); ?>
+<?php require 'gabarit.php'; ?>

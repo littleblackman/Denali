@@ -1,7 +1,4 @@
-<?php
-include_once ('_head.php');
-include_once ('_nav.php');
-?>
+<?php ob_start(); ?>
 <header>
     <h1> Billet simple pour l'Alaska</h1>
     <h2> par <br/> Jean Forteroche</h2>
@@ -11,7 +8,8 @@ include_once ('_nav.php');
 	<h4><a href = "index.php"> Veuillez remplir tous les champs</a>
 </div>
 </div>
-<?php include_once ('_footer.php');?>
+<?php $contenu = ob_get_clean(); ?>
+<?php require 'gabarit.php'; ?>
  
  
  

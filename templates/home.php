@@ -1,7 +1,4 @@
-<?php
-include_once ('_head.php');
-include_once ('_nav.php');
-?>
+<?php ob_start(); ?>
 <section>
 	<h2> Présentation</h2>
 		<p>Now what are the possibilities of warp drive? Cmdr Riker's nervous system has been invaded by an unknown microorganism. 
@@ -17,7 +14,7 @@ include_once ('_nav.php');
 			<?php foreach ($articles as $article): ?>
 	    		<article>
 	        		<p>
-	        			<a href ="ReadArticle.php?id=<?php echo $article->getId_article() ?>">
+	        			<a href ="ReadArticle?id=<?php echo $article->getId_article() ?>">
 	        														<?php echo $article->getTitre(); ?>
         				</a>
 	        		</p>
@@ -25,5 +22,5 @@ include_once ('_nav.php');
 	    	<?php endforeach ?>	
 		</ul>
 </nav>
-<?php include_once ('_footer.php');?>
- 
+<?php $contenu = ob_get_clean(); ?>
+<?php require 'gabarit.php'; ?>
