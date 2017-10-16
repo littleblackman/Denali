@@ -5,10 +5,10 @@
 		$id_article = $_GET['id'];
 		$articleManager = new ArticleManager();
 		$result= $articleManager->delete($id_article);
-		header('location: Home.php');
+		header('location: Home');
 	} else 
 	{
-		header('location: templates/error.php');
+		header('location: Error');
 		exit;
 	}
 //Inclusion du template

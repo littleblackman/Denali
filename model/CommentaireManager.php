@@ -2,7 +2,7 @@
 /*
 Declaration de la classe CommentaireManager 
 */
-class CommentaireManager extends Bdd
+class CommentaireManager extends BddManager
 {
      /**
      * Insert un objet Commentaire dans la BDD

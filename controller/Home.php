@@ -4,6 +4,6 @@ $articleManager = new ArticleManager();
 $articles = $articleManager->readAll();
 
 // Inclusion du template
-include 'templates/home.php';
+include_once 'templates/home.php';
 
 

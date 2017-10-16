@@ -1,5 +1,5 @@
 <?php
 
 
-include 'templates/error.php';
+include_once 'templates/error.php';
 exit;

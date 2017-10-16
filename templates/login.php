@@ -1,9 +1,9 @@
 <?php ob_start(); ?>
 <h1>Se connecter</h1>
 
-    <form action="login.php" method="POST">
+    <form action="Login" method="POST">
         <div class="form-group">
-            <label for="">Pseudo ou email</label>
+            <label for="">Pseudo</label>
             <input type="text" name="username" class="form-control"/>
         </div>
         <div class="form-group">
@@ -18,7 +18,7 @@
             <button type="submit" class="btn btn-primary">Se connecter</button>
     </form>
 <?php $contenu = ob_get_clean(); ?>
-<?php require 'gabarit.php'; ?>
+<?php require '_gabarit.php'; ?>
  
  
 

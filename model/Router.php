@@ -32,18 +32,15 @@ class Router
     {
         if(empty($this->url))
         {
-            echo "wtf";
             require_once($this->routes[$this->url]);
         }
         else
         {
             if(array_key_exists($this->url, $this->routes))
             {
-                echo "lol";
                 require($this->routes[$this->url]);
             } else
             {
-                echo "help";
                 require_once('/controller/Error.php');
             }
         }

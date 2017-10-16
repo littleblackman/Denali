@@ -1,24 +1,27 @@
 <?php
-if(!empty($_POST['username']) && (!empty($_POST['email'])) && (!empty($_POST['password'])) && (!empty($_POST['password_confirm'])))
+// verification que des donnees ont ete postes
+if(!empty($_POST))
 {
         $user = new User();
         $user->setUsername($_POST['username']);
         $user->setEmail($_POST['email']);
         $user->setPassword($_POST['password']);
-        var_dump($user);
-
-        if(isset($user))
+        if(!empty($user->getUsername()) && (!empty($user->getEmail())) &&  (!empty($user->getPassword())))
         {
                 $userManager = new UserManager();
-                $userManager->create($user);
-                require'templates/register.php';
+                $verify = $userManager->check($user);
+                if($verify !== false)
+                {
+                    echo "change de pseudo";
+                }else
+                {
+                    $userManager->create($user);
+                }
+
         }else
         {
-                echo $errors;
+            $user->setErrors($errors);
         }
-               
-}else
-{
-   require'templates/register.php' ;     
 }
+require_once 'templates/register.php';
 

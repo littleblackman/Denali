@@ -1,4 +1,15 @@
-<nav class="navbar navbar-inverse ">
+<?php
+if(!isset($_SESSION))
+{
+    session_start();
+}
+$session = new UserSession();
+if(isset($_SESSION['user']))
+{
+$session->setUserName($_SESSION['user']);
+$session ->getName($session);
+}
+?><nav class="navbar navbar-inverse ">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -11,12 +22,19 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+              <?php if($session ->getName($session) == false)
+              { ?>
             <li><a href="Home">Accueil</a></li>
-            <li><a href="Register">S'inscrire</a></li>
             <li><a href="Login">Se connecter</a></li>
+              <?php } else
+              { ?>
+              <li><a href="Home">Accueil</a></li>
+              <li><a href="Register">S'inscrire</a></li>
+              <li><a href="Login">Se connecter</a></li>
             <li><a href="Dashboard">Tableau de bord</a></li>
             <li><a href="CreateArticle">Nouveau chapitre</a></li>
             <li><a href="Logout">Quitter</a></li>
+              <?php } ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

@@ -9,11 +9,11 @@
         $commentaire->setUsername($_POST['username']);
         $commentaire->setCommentaire($_POST['commentaire']);
         $saveIsOk = $CommentaireManager->create($commentaire);
-        header('location: Home.php');
+        header('location: Home');
         exit;
     }else
     {
-       include 'templates/insertComments.php';
+        header('location: Error');
        exit;
     }
 // Inclusion du template

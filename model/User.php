@@ -29,7 +29,7 @@ class User
     /*
     * @var         tableau $errors recoltant les differentes erreurs
     */
-        private $errors= "erreur";
+        private $errors= [];
    
     /**
      * Creation de la methode __construct
@@ -92,21 +92,20 @@ class User
          */
          public function setErrors($errors)
          {
-             $this->errors = $errors;
+             $this->errors= $errors;
             	return $this;
          }
    
      /**
-     * @param       string $username nom de l'utilisateur qui à fait le commentaire $username
+     * @param       string $username nom de l'utilisateur $username
          * @return self
          */
          public function setUsername($username)
         {
-            if(!preg_match('/^[a-zA-Z0-9_]+$/', $_POST['username']))
+            if((empty($_POST['username']) || !preg_match('/^[a-zA-Z0-9_-]+$/', $_POST['username'])))
         	{
-        	    $this->errors ;
-        	    return $this;
-        	    
+        	    $this->errors[]= "votre pseudo n'est pas valide";
+        	    return $this ;
         	}else
         	{
         	    $this->username = $username;
@@ -120,9 +119,9 @@ class User
          */
         public function setEmail($email)
         {
-            if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+            if((empty($_POST['email']) ||(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))))
             {
-                $this->errors;
+                $this->errors[] = "Veuillez rentrer un email valide";
                 return $this;
             }else
             {
@@ -138,9 +137,9 @@ class User
          */
         public function setPassword($password)
         {
-             if($_POST['password'] != $_POST['password_confirm'])
+             if((empty($_POST['password']) && (empty($_POST['password_confirm']) ||($_POST['password'] != $_POST['password_confirm']))))
              {
-                 $this->errors;
+                 $this->errors[] =" Rentrez deux mots de passe identiques";
                  return $this;
              }else
              {
