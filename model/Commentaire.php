@@ -26,7 +26,10 @@ class Commentaire
      * @var        string $date_commentaire dale à laquelle le commentaire a été posté
      */
         private $date_commentaire;
-    
+    /*
+     * @var        string $state etat du commentaire : non signale ou traite = 0, signaler = 1
+     */
+    private $state;
     /**
      * Creation de la methode __construct
      */
@@ -46,6 +49,8 @@ class Commentaire
             $this->username=$data['username'];
             $this->commentaire = $data['commentaire'];
             $this->date_acommentaire = new DateTime($data['date_commentaire']);
+            $this->state = $data['state'];
+
         }
 // création des getters (lisent le contenu d'une propriete d'une classe)
     /**
@@ -86,6 +91,13 @@ class Commentaire
         public function getDateCommentaire()
         {
             return $this->date_commentaire;
+        }
+    /**
+     * @return        string $commentaire commentaire lie à un article
+     */
+        public function getState()
+        {
+            return $this->state;
         }
     
 // Création des setters (assigne une valeur à un attribut)

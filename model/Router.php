@@ -14,7 +14,10 @@ class Router
          "Logout" =>'/controller/Logout.php',
          "ReadArticle"=>'controller/ReadArticle.php',
          "Register" =>'controller/Register.php',
-         "Update" =>'controller/Update.php'
+         "Update" =>'controller/Update.php',
+         "Report" =>'controller/Report.php',
+         "DelComment" =>'controller/DelComment.php',
+         "ValidateComment" =>'controller/ValidateComment.php'
     ];
 //constructor qui prend en parametres l'url
     public function __construct($url)

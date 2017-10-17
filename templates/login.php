@@ -1,7 +1,6 @@
 <?php ob_start(); ?>
 <h1>Se connecter</h1>
-
-    <form action="Login" method="POST">
+        <form action="Login" method="POST">
         <div class="form-group">
             <label for="">Pseudo</label>
             <input type="text" name="username" class="form-control"/>

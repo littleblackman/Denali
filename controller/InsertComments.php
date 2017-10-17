@@ -1,7 +1,5 @@
 <?php
-
 // Création d'un objet
-
     if(!empty($_POST['username']) OR (!empty($_POST['Commentaire'])))
     {
         $CommentaireManager = new CommentaireManager();
@@ -13,8 +11,7 @@
         exit;
     }else
     {
-        header('location: Error');
-       exit;
+        $_SESSION['flash']['warning'] = 'veuillez remplir tous les champs, svp';
+        include 'templates/insertComments.php';
+        exit;
     }
-// Inclusion du template
-//include 'templates/createArticle.php';

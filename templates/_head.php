@@ -10,7 +10,15 @@
       <link rel="icon" href="../../favicon.ico">
       <title>Billet simple pour l'Alaska</title>
       <link href='web/app.css' rel='stylesheet'>
+      <link href="web/modify.css" rel="stylesheet">
+        <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+        <script>
+            tinymce.init({
+                selector: '#mytextarea'
+            });
+        </script>
     </head>
     <body>
       <div class="container">
 </html>
+

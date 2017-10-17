@@ -3,7 +3,6 @@
 	<article>
 	    <h2><?php echo $article->getTitre(); ?></h2>
 	    <p><?php echo $article->getText(); ?></p>
-	    
     </article>
     	<hr>
 </header>
@@ -16,6 +15,10 @@
 					    <p> <strong><?php echo $commentaire['username'] ?> : </strong></p>
 					    <p><?php echo $commentaire['commentaire'] ?></p>
 					 </article>
+                    <form action = "Report" method= "POST">
+                        <input type="hidden" name="id_commentaire" value = "<?php echo $commentaire['id_commentaire'] ?>" >
+                        <button type="submit"  class="btn btn-danger btn-xs"> Signaler</button><br/>
+                    </form>
 				<?php endforeach ?>
 	</div>
 		    <hr>
@@ -32,9 +35,12 @@
 	<div class="panel-body">
 		     <form action ="InsertComments" method="POST" ><br/>
 		     <input type="hidden" name="id" value="<?php echo $idArticle?>"/>
-		     <label for="titre"> Pseudo </label> : <br/><input type = "text" name ="username" id="username" /> <br/>
-		     <label for="texte"> Commentaires </label> : <br/><textarea name="commentaire" id="commentaire" rows="10" cols="135"/></textarea><br />
-			 <button type="submit"  class="btn btn-primary btn-xs">commenter</button><br/>
+		     <label for="titre"> Pseudo </label> : <br/>
+             <input type = "text" name ="username" id="username" /> <br/>
+		     <label for="texte"> Commentaires </label> : <br/>
+             <textarea name="commentaire" id="commentaire" rows="10" cols="135"/></textarea><br/>
+			 <button type="submit" class="btn btn-primary btn-xs">commenter</button><br/>
+             </form>
 	    </p>
 	 </div>
 </div>

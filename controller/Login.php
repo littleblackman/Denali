@@ -9,11 +9,10 @@ if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
             $_SESSION['user'] = $result['username'];
             $session = new UserSession();
             $session->setUserName($_SESSION['user']);
-            var_dump($session);
-            echo $_SESSION['flash']['success'] = 'Vous etes maintenant connecte';
+            $_SESSION['flash']['success'] = 'Vous etes maintenant connecte';
         }else
         {
-            echo $_SESSION['flash']['danger'] = 'Identifiant ou mot de passe incorrecte';
+            $_SESSION['flash']['danger'] = 'Identifiant ou mot de passe incorrecte';
         }
 }
 // Inclusion du template

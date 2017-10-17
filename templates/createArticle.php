@@ -10,7 +10,7 @@
         <form action ="CreateArticle" method = "POST"> <!-- formulaire pour l'ecrivain-->
             <p id="introduction">
                 <label for="titre"> Titre </label> : <br/> <textarea name ="titre" id="titre" cols="135" /></textarea> <br />
-                <label for="text"> Texte </label> : <br/> <textarea name ="text" id="text" rows="25" cols="135"/></textarea> <br />
+                <label for="text"> Texte </label> : <br/> <textarea name ="text" id="mytextarea" rows="25" cols="135"/></textarea> <br />
                 <button type="submit"  class="btn btn-primary btn-xs">publier</button><br/>
             </p>
         </form>
