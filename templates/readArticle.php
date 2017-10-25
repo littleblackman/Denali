@@ -9,17 +9,16 @@
 <section id = "Commentaires">
 	<div class="well well-lg">
 		<h3> Commentaires</h3>
-				<?php foreach ($commentaires as $commentaire): ?>
-					 <article>
-						<p><strong>Le <?php echo date('d/m/y à H:i:s', strtotime($commentaire['date_commentaire'])); ?> </strong></p>
-					    <p> <strong><?php echo $commentaire['username'] ?> : </strong></p>
-					    <p><?php echo $commentaire['commentaire'] ?></p>
-					 </article>
-                    <form action = "Report" method= "POST">
-                        <input type="hidden" name="id_commentaire" value = "<?php echo $commentaire['id_commentaire'] ?>" >
-                        <button type="submit"  class="btn btn-danger btn-xs"> Signaler</button><br/>
-                    </form>
-				<?php endforeach ?>
+				<?php if(isset($commentaires) AND (!empty($commentaires)))
+                {
+                    foreach  ($commentaires as $commentaire):?>
+                        <article>
+                            <p><strong>Le <?php echo date('d/m/y à H:i:s', strtotime($commentaire->getDateCommentaire())); ?> </strong></p>
+                            <p> <strong><?php echo $commentaire->getUsername() ?> :</strong> "<?php echo $commentaire->getCommentaire() ?>"</p>
+                            <a  class ="btn btn-warning btn-sm" href ="Report?id=<?php echo $commentaire->getIdCommentaire()?>">Signaler</a>
+                        </article>
+                    <?php endforeach;
+                }?>
 	</div>
 		    <hr>
 	<div class="well well-lg">
@@ -38,7 +37,7 @@
 		     <label for="titre"> Pseudo </label> : <br/>
              <input type = "text" name ="username" id="username" /> <br/>
 		     <label for="texte"> Commentaires </label> : <br/>
-             <textarea name="commentaire" id="commentaire" rows="10" cols="135"/></textarea><br/>
+             <textarea name="commentaire" id="commentaire" rows="2" cols="135"/></textarea><br/>
 			 <button type="submit" class="btn btn-primary btn-xs">commenter</button><br/>
              </form>
 	    </p>

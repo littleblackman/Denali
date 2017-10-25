@@ -1,8 +1,4 @@
 <?php ob_start(); ?>
-<header>
-    <h1> Billet simple pour l'Alaska</h1>
-    <h2> par <br/> Jean Forteroche</h2>
-</header>
 <div class="panel panel-primary">
 	<div class="panel-heading"><p id="Publier"> Publier
 	</div>

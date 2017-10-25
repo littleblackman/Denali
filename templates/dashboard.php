@@ -19,10 +19,13 @@
         <h3> Commentaires publiés</h3>
             <ul>
                 <?php foreach ($comments as $comment): ?>
-                    <article>
-                        <p><?php echo $comment->getUsername();?></p>
+                    <?php ($comment->getState()==1) ? $border ="border:1px solid black;  background-color: #FFBC5A" : $border="" ;?>
+                    <article style="<?php echo $border ?>">
+                        <p><?php echo $comment->getUsername();?> : </p>
                         <p><?php echo  $comment->getCommentaire();?></p>
+                    <?php if($comment->getState()==1) : ?>
                         <a  class ="btn btn-warning btn-sm" href ="ValidateComment?id=<?php echo $comment->getIdCommentaire()?>">Valider</a>
+                    <?php endif; ?>
                         <a  class ="btn btn-warning btn-sm" href ="DelComment?id=<?php echo $comment->getIdCommentaire()?>">Supprimer</a>
                     </article>
                 <?php endforeach ?>

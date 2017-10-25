@@ -14,10 +14,18 @@ class CommentaireManager extends BddManager
             public function create(Commentaire $commentaire)
              {
                  $bdd = $this->bdd;
-                $query = $bdd->prepare('INSERT INTO commentaires(id_article,username, commentaire, date_commentaire) VALUES(?,?,?,NOW())');
-                $query->execute(array( $_POST['id'],$_POST['username'], $_POST['commentaire']));
-                $result=$query;
-                return $result;
+                 $query = $bdd->prepare('INSERT INTO commentaires(id_article, username, commentaire, date_commentaire, state) 
+                 VALUES(:id_article, :username, :commentaire, :date_commentaire, :state)');
+                 $query->execute(
+                     array(
+                         'id_article' => $commentaire->getIdArticle(),
+                         'username' => $commentaire->getUsername(),
+                         'commentaire' => $commentaire->getCommentaire(),
+                         'date_commentaire' => $commentaire->getDateCommentaire(),
+                         'state' =>$commentaire->getState()
+                     )
+                 );
+                 return $this;
              }
      /**
       * Recupere tous les objets Commentaire de la bdd
@@ -25,17 +33,22 @@ class CommentaireManager extends BddManager
       * @return     array|bool  Retourne un tableau d'objets Commentaire ou un tableau vide s'in n'y a aucun objet
       * ou false si une erreur survient
       */
-            public function readAllCommentsByPost()
+            public function readAllCommentsByPost($idArticle)
             {
-                $bdd = $this->bdd;
-                // 1. Préparer la requête 
-                $query = $bdd->prepare('SELECT * FROM commentaires WHERE id_article =? ORDER BY date_commentaire DESC');
-                // 2. Exécuter la requête
-                $query->execute(array($_GET['id']));
-                // 3. On récupère les résultats de la requête
-                $commentaires=$query->fetchAll();
-                return $commentaires;
-            } 
+                    $bdd = $this->bdd;
+                    // 1. Préparer la requête
+                    $query = $bdd->prepare('SELECT * FROM commentaires WHERE id_article =? ORDER BY date_commentaire DESC');
+                    // 2. Exécuter la requête
+                    $query->execute(array($idArticle));
+                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $commentaire = new Commentaire();
+                        $commentaire->hydrate($row);
+                        $commentaires[] = $commentaire;
+                    }
+                    return $commentaires;
+            }
+
        /**
       * Supprime un objet Commentaire stocke en bdd
       *
@@ -62,7 +75,7 @@ class CommentaireManager extends BddManager
              {
                     $bdd = $this->bdd;
                     // 1. Préparer la requête
-                    $query = $bdd->prepare('SELECT * FROM commentaires ORDER BY state DESC LIMIT 0,10');
+                    $query = $bdd->prepare('SELECT * FROM commentaires ORDER BY state DESC, date_commentaire DESC LIMIT 0,10');
                     $query ->execute();
                     // 3. On récupère les résultats de la requête
                     $results=$query->fetchAll();
@@ -77,7 +90,7 @@ class CommentaireManager extends BddManager
              public function validateComment($idcommentaire)
              {
                  $bdd = $this->bdd;
-                 $query = $bdd->prepare ("UPDATE commentaires SET state = NULL WHERE id_commentaire = ? ");
+                 $query = $bdd->prepare ("UPDATE commentaires SET state = 0 WHERE id_commentaire = ? ");
                  $query -> execute(array($idcommentaire));
                  return $query ->execute();
              }

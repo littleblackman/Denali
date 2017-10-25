@@ -13,11 +13,12 @@
 		<ul>
 			<?php foreach ($articles as $article): ?>
 	    		<article>
-	        		<p>
-	        			<a href ="ReadArticle?id=<?php echo $article->getId_article() ?>">
-	        														<?php echo $article->getTitre(); ?>
-        				</a>
-	        		</p>
+	        			<h4><a href ="ReadArticle?id=<?php echo $article->getId_article() ?>">
+                            <?php echo $article->getTitre(); ?>
+        				</a></h4>
+                        <p>
+                            <?php echo substr($article->getText(), 0,250);?>
+	        		    </p>
 	    		</article>
 	    	<?php endforeach ?>	
 		</ul>

@@ -4,7 +4,7 @@ if(!empty($_GET['id']) AND (ctype_digit($_GET['id'])))
 {
     $id_article = $_GET['id'];
     $articleManager = new ArticleManager();
-    $result= $articleManager->delete($id_article);
+    $result = $articleManager->delete($id_article);
     header('location: Home');
 } else
 {

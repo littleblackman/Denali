@@ -1,4 +1,5 @@
 <?php
+require_once('Article.php');
 /*
 Declaration de la classe ArticleManager 
 */
@@ -14,10 +15,15 @@ class ArticleManager extends BddManager
             public function create(Article $article)
              {
                     $bdd = $this->bdd;
-                    $query = $bdd->prepare('INSERT INTO articles(titre, text, date_ajout) VALUES(?,?,NOW())');
-                    $query->execute(array($_POST['titre'], $_POST['text']));
-                    $result=$query;
-                    return $result;
+                    $req = $bdd->prepare('INSERT INTO articles (titre, text, date_ajout) VALUES(:title, :text, :date_ajout)');
+                    $req->execute(
+                        array(
+                        'title' => $article->getTitre(),
+                        'text' => $article->getText(),
+                        'date_ajout' => $article->getDate_ajout()
+                    )
+                    );
+                    return $this;
              }
      /**
       * Recupere tous les objets Article de la bdd
@@ -61,15 +67,16 @@ class ArticleManager extends BddManager
                 $query->execute(array($id_article));
                // je recupere le resultat de la requete par un fetch 
                 $result = $query->fetch();
-                return $result;
+                $article = new Article ($result);
+                return $article;
             }     
             
       /**
       * Supprime un objet Article stocke en bdd
       *
-      * @param      Article  $article  objet de type Article
+      * @param
       * 
-      * return     bool true en cas de succes ou false en cas d'erreur        
+      * return     bool true en cas de succes ou false en cas d'erreur
       */
              public function delete($id_article)
              {

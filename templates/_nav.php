@@ -43,10 +43,9 @@ $session ->getName($session);
                           <ul class="nav navbar-nav">
               <li><a href="Home">Accueil</a></li>
               <li><a href="Register">S'inscrire</a></li>
-              <li><a href="Login">Se connecter</a></li>
-            <li><a href="Dashboard">Tableau de bord</a></li>
-            <li><a href="CreateArticle">Nouveau chapitre</a></li>
-            <li><a href="Logout">Quitter</a></li>
+              <li><a href="Dashboard">Tableau de bord</a></li>
+              <li><a href="CreateArticle">Nouveau chapitre</a></li>
+              <li><a href="Logout">Quitter</a></li>
               <?php } ?>
           </ul>
         </div><!--/.nav-collapse -->

@@ -7,10 +7,9 @@
 	{
 		$idArticle = $_GET['id'];
 		$articleManager = new ArticleManager();
-		$result= $articleManager->readOne($idArticle);
-		$article = new Article ($result);
+        $article = $articleManager->readOne($idArticle);
 		$commentaireManager = new CommentaireManager();
-		$commentaires=$commentaireManager->readAllCommentsByPost();
+        $commentaires = $commentaireManager->readAllCommentsByPost($idArticle);
 		include 'templates/readArticle.php';
 		exit;
 	} else

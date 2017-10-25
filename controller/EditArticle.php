@@ -4,8 +4,7 @@ session_start();
 	{
 		$idArticle = $_GET['id'];
 		$articleManager = new ArticleManager();
-		$result= $articleManager->readOne($idArticle);
-		$article = new Article ($result);
+        $article= $articleManager->readOne($idArticle);
 		include_once 'templates/editArticle.php';
 		exit;
 	} else
