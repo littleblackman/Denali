@@ -7,15 +7,38 @@
  */
 class UserSession
 {
-    private $name;
-
-    public function setUserName($name)
+    public function initUserSession($name, $email, $role)
     {
-      $_SESSION['user'] = $name;
-      $this->name = $name;
+        $this->setName($name);
+        $this->setEmail($email)
+        $this->setRole($role);       
+    }
+    
+    public function setName($name)
+    {
+      $_SESSION['user']['name'] = $name;
     }
     public function getName()
     {
-        return $this->name;
+        return $_SESSION['user']['name'];
     }
+    
+    public function setEmail($email)
+    {
+      $_SESSION['user']['email'] = $email;
+    }
+    public function getEmail()
+    {
+        return $_SESSION['user']['email'];
+    }
+    
+    public function setRole($role)
+    {
+      $_SESSION['user']['role'] = $role;
+    }
+    public function getRole()
+    {
+        return $_SESSION['user']['role'];
+    }
+    
 }
